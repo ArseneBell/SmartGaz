@@ -30,10 +30,19 @@
                     <span>Yaoundé, Cameroun</span>
                 </div>
                 <div class="navbar-actions">
-                    <div class="navbar-user">
-                        <div class="user-avatar">{{avatar}}</div>
-                        <span class="user-name">{{session['name']}}</span>
-                    </div>
+                    <a href="{{ url_for('profile') }}">
+                        <div class="navbar-user" >
+                            <div class="user-avatar">{{avatar}}</div>
+                            <span class="user-name">{{session['name']}}</span>
+                        </div>
+                    </a>
+
+                    <a href="{{ url_for('logout') }}">
+                        <div class="navbar-user" >
+                            <div class="logout">↩️</div>
+                            <span class="user-name">Deconnexion</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </nav>

@@ -34,6 +34,13 @@
                         <div class="user-avatar">{{avatar}}</div>
                         <span class="user-name">{{title}} - Gérant</span>
                     </div>
+
+                    <a href="{{ url_for('logout') }}">
+                        <div class="navbar-user" >
+                            <div class="logout">↩️</div>
+                            <span class="user-name">Deconnexion</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </nav>

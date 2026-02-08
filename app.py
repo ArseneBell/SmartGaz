@@ -214,11 +214,8 @@ def update_profile():
 
 @app.route('/logout')
 def logout():
-    session.pop('name', None)
-    session.pop('id', None)
-    session.pop('email', None)
-    session.pop('title', None)
-    return redirect(url_for('connection'))
+    session.clear()
+    return redirect(url_for('login'))
 
 @app.route('/precedent')
 def precedent():

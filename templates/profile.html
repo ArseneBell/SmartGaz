@@ -13,7 +13,7 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="navbar-content">
-                <a href="dashboard.html" class="navbar-brand">
+                <a href="{{ url_for('acceuil') }}" class="navbar-brand">
                     <div class="navbar-logo">
                         <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
@@ -42,7 +42,7 @@
         <main class="profile-content">
             <!-- Breadcrumb -->
             <nav class="breadcrumb">
-                <a href="dashboard.html">Accueil</a>
+                <a href="{{ url_for('acceuil') }}">Accueil</a>
                 <span class="breadcrumb-separator">›</span>
                 <span class="breadcrumb-current">Mon profil</span>
             </nav>
