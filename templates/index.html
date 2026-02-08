@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartGaz - Votre gaz sans stress</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+    <!-- Page d'accueil -->
+    <div class="welcome-container">
+        <div class="welcome-content">
+            <!-- Logo et nom de l'application -->
+            <div class="logo-section">
+                <div class="logo">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                        <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                        <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                        <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                        <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <h1 class="app-name">SmartGaz</h1>
+            </div>
+
+            <!-- Message principal -->
+            <div class="welcome-message">
+                <h2>Trouvez et réservez votre gaz sans stress</h2>
+                <p>Localisez les stations de gaz disponibles à Yaoundé et réservez en quelques clics</p>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="action-buttons">
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Se connecter</a>
+                <a href="{{ url_for('register') }}" class="btn btn-secondary">S'inscrire</a>
+            </div>
+            <a href="{{ url_for('slogin') }}" class="">Se connecter en tant que station</a>
+
+
+            <!-- Caractéristiques -->
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📍</div>
+                    <h3>Localisation</h3>
+                    <p>Trouvez les stations proches de vous</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <h3>Disponibilité</h3>
+                    <p>Vérifiez le stock en temps réel</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Réservation</h3>
+                    <p>Réservez et payez en ligne</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="welcome-footer">
+            <p>&copy; 2026 SmartGaz - Yaoundé, Cameroun</p>
+        </footer>
+    </div>
+</body>
+</html>

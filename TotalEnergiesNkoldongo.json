@@ -1,0 +1,15 @@
+[
+    {
+        "position": 1,
+        "lsig": "AB86z5V2noGnCTzgvsgIvsgFcBMD",
+        "thumbnail": "https://serpapi.com/searches/698890d4bde979d07ede267c/images/oTmQqyLOFwPxVaY1FUWuKTB8lO6Jpj_JhRxF7EH8UXE.jpeg",
+        "place_id": "9350836917740005391",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=9350836917740005391&q=Localisation+du+quartier+Nkoldongo+%C3%A0+Yaounde.",
+        "gps_coordinates": {
+            "latitude": 3.4844892,
+            "longitude": 11.517033
+        },
+        "title": "Nkolndongo",
+        "address": "Cameroon"
+    }
+]

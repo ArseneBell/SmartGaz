@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stations de gaz - SmartGaz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stations.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+</head>
+<body>
+    <div class="stations-page">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="{{ url_for('acceuil') }}" class="navbar-brand">
+                    <div class="navbar-logo">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                            <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                            <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                            <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                            <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h1 class="navbar-title">SmartGaz</h1>
+                </a>
+                <div class="navbar-location">
+                    <span class="navbar-location-icon">📍</span>
+                    <span>Yaoundé, Cameroun</span>
+                </div>
+                <div class="navbar-actions">
+                    <a href="{{ url_for('profile') }}">
+                        <div class="navbar-user" >
+                            <div class="user-avatar">{{avatar}}</div>
+                            <span class="user-name">{{session['name']}}</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header de la page -->
+        <header class="page-header">
+            <div class="page-header-content">
+                <h2 class="page-title">Stations de gaz à Yaoundé</h2>
+                <p class="page-subtitle">Trouvez et réservez votre bouteille de gaz</p>
+            </div>
+        </header>
+
+        <!-- Filtres -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="quartier-filter" class="filter-label">Quartier</label>
+                    <select id="quartier-filter" class="filter-select">
+                        <option value="">Tous les quartiers</option>
+                        <option value="bastos">Bastos</option>
+                        <option value="melen">Melen</option>
+                        <option value="ngoa-ekelle">Ngoa-Ekellé</option>
+                        <option value="emana">Emana</option>
+                        <option value="odza">Odza</option>
+                        <option value="essos">Essos</option>
+                        <option value="cite-verte">Cité Verte</option>
+                        <option value="mvog-ada">Mvog-Ada</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="stock-filter" class="filter-label">Disponibilité</label>
+                    <select id="stock-filter" class="filter-select">
+                        <option value="">Toutes les stations</option>
+                        <option value="available">Disponible uniquement</option>
+                        <option value="empty">Rupture de stock</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="distance-filter" class="filter-label">Distance</label>
+                    <select id="distance-filter" class="filter-select">
+                        <option value="">Toutes distances</option>
+                        <option value="near">Moins de 2 km</option>
+                        <option value="medium">2-5 km</option>
+                        <option value="far">Plus de 5 km</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenu principal -->
+        <main class="stations-content">
+            <!-- Légende -->
+            <div class="legend-section">
+                <h3 class="legend-title">Légende</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="badge badge-success">Disponible</span>
+                        <span>Stock disponible</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="badge badge-danger">Vide</span>
+                        <span>Rupture de stock</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grille des stations -->
+            <div class="stations-grid">
+                <!-- Station 1 - Disponible -->
+                
+
+                {%for station in session['stations']%}
+
+                    <article class="station-card">
+                        <div class="station-header">
+                            <a href="{{station.localisation}}" class="station-name-link" target="_blank">
+                                <h3 class="station-name">
+                                    <span class="station-icon">⛽</span>
+                                    {{station.title}}
+                                </h3>
+                            </a>
+                            
+                            <div class="station-location">
+                                <span class="location-icon">📍</span>
+                                <span>{{station.address}}</span>
+                            </div>
+                        </div>
+                        <div class="station-body">
+                            <div class="station-info">
+                                <div class="info-row">
+                                    <span class="info-label">Telephone</span>
+                                    <span class="distance-badge">{{station.phone}}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Horaires</span>
+                                    <span class="info-value">{{station.hours}}</span>
+                                </div>
+                            </div>
+                            {% if station.stock == 'disponible'%}
+                            <div class="stock-status available">
+                                <div class="stock-info">
+                                    <span class="stock-icon">✓</span>
+                                    <span class="stock-label">Disponible</span>
+                                </div>
+                                <span class="badge badge-success">En stock</span>
+                            </div>
+                            {% else %}
+                            <div class="stock-status empty">
+                                <div class="stock-info">
+                                    <span class="stock-icon">✗</span>
+                                    <span class="stock-label">Rupture de stock</span>
+                                </div>
+                                <span class="badge badge-danger">Vide</span>
+                            </div>
+                            {% endif %}
+                            <div class="price-info">
+                                <p class="price-label">Prix des bouteilles :</p>
+                                <div class="price-values">
+                                    <div class="price-item">
+                                        <div class="price-type">12.5 kg</div>
+                                        <div class="price-amount">6 500 FCFA</div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="price-type">35 kg</div>
+                                        <div class="price-amount">18 200 FCFA</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="station-footer">
+                            <a href="{{ url_for('reservation', title=station.title) }}" class="btn btn-primary reserve-button">Réserver</a>
+                        </div>
+                    </article>
+
+                {% endfor %}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 SmartGaz - Yaoundé, Cameroun | <a href="dashboard.html">Retour au tableau de bord</a></p>
+        </footer>
+    </div>
+</body>
+</html>

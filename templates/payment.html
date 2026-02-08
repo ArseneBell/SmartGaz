@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - SmartGaz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+    <div class="payment-page">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="{{ url_for('acceuil') }}" class="navbar-brand">
+                    <div class="navbar-logo">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                            <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                            <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                            <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                            <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h1 class="navbar-title">SmartGaz</h1>
+                </a>
+                <div class="navbar-location">
+                    <span class="navbar-location-icon">📍</span>
+                    <span>Yaoundé, Cameroun</span>
+                </div>
+                <div class="navbar-actions">
+                    <div class="navbar-user">
+                        <div class="user-avatar">{{avatar}}</div>
+                        <span class="user-name">{{session['name']}}</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="payment-content">
+            <!-- Étapes de progression -->
+            <div class="progress-steps">
+                <div class="progress-step">
+                    <div class="step-circle completed">✓</div>
+                    <span class="step-label">Station</span>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle completed">✓</div>
+                    <span class="step-label">Réservation</span>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle active">3</div>
+                    <span class="step-label">Paiement</span>
+                </div>
+            </div>
+
+            <!-- Titre -->
+            <h2 class="payment-title">Finaliser votre paiement</h2>
+            <p class="payment-subtitle">Choisissez votre méthode de paiement mobile</p>
+
+            <!-- Récapitulatif de commande -->
+            <section class="order-recap">
+                <h3 class="recap-title">Récapitulatif de votre commande</h3>
+                
+                <div class="recap-item">
+                    <span class="recap-label">Station</span>
+                    <span class="recap-value">{{station.title}}</span>
+                </div>
+                <div class="recap-item">
+                    <span class="recap-label">Type de bouteille</span>
+                    <span class="recap-value">12.5 kg</span>
+                </div>
+                <div class="recap-item">
+                    <span class="recap-label">Quantité</span>
+                    <span class="recap-value">1</span>
+                </div>
+                <div class="recap-item">
+                    <span class="recap-label">Prix unitaire</span>
+                    <span class="recap-value">6 500 FCFA</span>
+                </div>
+                
+                <div class="recap-total">
+                    <span class="recap-total-label">Total à payer</span>
+                    <span class="recap-total-value">6 500 FCFA</span>
+                </div>
+            </section>
+
+            <!-- Méthodes de paiement -->
+            <section class="payment-methods">
+                <h3 class="methods-title">Choisissez votre méthode de paiement</h3>
+                
+                <form>
+                    <div class="methods-grid">
+                        <!-- MTN Mobile Money -->
+                        <div class="payment-method">
+                            <input type="radio" id="mtn-money" name="payment-method" value="mtn" checked>
+                            <label for="mtn-money" class="method-label">
+                                <div class="method-logo">
+                                    <div class="mtn-logo">MTN</div>
+                                </div>
+                                <div class="method-name">MTN Mobile Money</div>
+                            </label>
+                        </div>
+
+                        <!-- Orange Money -->
+                        <div class="payment-method">
+                            <input type="radio" id="orange-money" name="payment-method" value="orange">
+                            <label for="orange-money" class="method-label">
+                                <div class="method-logo">
+                                    <div class="orange-logo">Orange</div>
+                                </div>
+                                <div class="method-name">Orange Money</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Formulaire de paiement -->
+                    <div class="payment-form">
+                        <h4 class="form-title">Informations de paiement</h4>
+                        
+                        <div class="form-group">
+                            <label for="phone-number" class="form-label">Numéro de téléphone</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">📱</span>
+                                <input 
+                                    type="tel" 
+                                    id="phone-number" 
+                                    name="phone-number" 
+                                    class="form-input" 
+                                    placeholder="6 XX XX XX XX"
+                                    pattern="[6][0-9]{8}"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="security-message">
+                            <span class="security-icon">🔒</span>
+                            <p class="security-text">Paiement sécurisé. Vous recevrez une notification de confirmation sur votre téléphone.</p>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="payment-actions">
+                        <a href="{{ url_for('reservation', title=title) }}" class="btn btn-secondary">Retour</a>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('confirmation', title=title) }}'">
+                            Payer 6 500 FCFA
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Section de confirmation (normalement cachée, affichée après paiement) -->
+            <section id="confirmation" style="display: none;">
+                <div class="payment-confirmation">
+                    <div class="confirmation-icon">✅</div>
+                    <h2 class="confirmation-title">Paiement confirmé !</h2>
+                    <p class="confirmation-message">Votre réservation a été enregistrée avec succès</p>
+
+                    <!-- Détails de la confirmation -->
+                    <div class="confirmation-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Numéro de réservation</span>
+                            <span class="detail-value">#SGZ-2026-0234</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value">08 Février 2026</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Heure</span>
+                            <span class="detail-value">14:30</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Station</span>
+                            <span class="detail-value">Total Bastos</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Bouteille</span>
+                            <span class="detail-value">6 kg</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Montant payé</span>
+                            <span class="detail-value">5 500 FCFA</span>
+                        </div>
+                    </div>
+
+                    <!-- Instructions de retrait -->
+                    <div class="pickup-instructions">
+                        <h4 class="instructions-title">
+                            <span>📋</span>
+                            Instructions de retrait
+                        </h4>
+                        <ul class="instructions-list">
+                            <li>Présentez-vous à la station Total Bastos dans les 24 heures</li>
+                            <li>Apportez une pièce d'identité valide</li>
+                            <li>Communiquez votre numéro de réservation : #SGZ-2026-0234</li>
+                            <li>Vérifiez l'état de la bouteille avant de quitter la station</li>
+                            <li>En cas de problème, contactez notre support : 699 XX XX XX</li>
+                        </ul>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="confirmation-actions">
+                        <a href="dashboard.html" class="btn btn-primary">Retour au tableau de bord</a>
+                        <a href="stations.html" class="btn btn-secondary">Nouvelle réservation</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 SmartGaz - Yaoundé, Cameroun</p>
+        </footer>
+    </div>
+
+    <!-- Note: Dans une vraie application, la section de confirmation serait affichée dynamiquement -->
+    <!-- Pour la démo, vous pouvez modifier le style display de #confirmation pour le tester -->
+</body>
+</html>

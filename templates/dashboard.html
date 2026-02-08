@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - SmartGaz</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-page">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <!-- Logo et nom -->
+                <a href="dashboard.html" class="navbar-brand">
+                    <div class="navbar-logo">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                            <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                            <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                            <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                            <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h1 class="navbar-title">SmartGaz</h1>
+                </a>
+
+                <!-- Localisation -->
+                <div class="navbar-location">
+                    <span class="navbar-location-icon">📍</span>
+                    <span>Yaoundé, Cameroun</span>
+                </div>
+
+                <!-- Actions utilisateur -->
+                <div class="navbar-actions">
+                    <div class="navbar-user">
+                        <div class="user-avatar">JD</div>
+                        <span class="user-name">Jean Dupont</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="main-content">
+            <!-- Section Hero -->
+            <section class="dashboard-hero">
+                <h2 class="hero-title">Bienvenue sur SmartGaz !</h2>
+                <p class="hero-subtitle">Trouvez facilement votre gaz domestique à Yaoundé</p>
+            </section>
+
+            <!-- Alerte de pénurie -->
+            <section class="shortage-alert">
+                <div class="alert-header">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h3>Alerte : Pénurie de gaz en cours</h3>
+                        <p>Certaines stations connaissent actuellement des ruptures de stock. Vérifiez la disponibilité avant de vous déplacer.</p>
+                    </div>
+                </div>
+                <div class="alert-details">
+                    <ul>
+                        <li>Stations disponibles limitées dans certains quartiers</li>
+                        <li>Délais de réapprovisionnement : 2-3 jours</li>
+                        <li>Nous vous recommandons de réserver à l'avance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Actions rapides -->
+            <section class="quick-actions">
+                <h2 class="section-title">Actions rapides</h2>
+                <div class="actions-grid">
+                    <!-- Trouver une station -->
+                    <div class="action-card">
+                        <div class="action-icon">🗺️</div>
+                        <h3 class="action-title">Trouver une station</h3>
+                        <p class="action-description">Localisez les stations de gaz proches de chez vous</p>
+                        <a href="stations.html" class="btn btn-primary">Voir les stations</a>
+                    </div>
+
+                    <!-- Mes réservations -->
+                    <div class="action-card">
+                        <div class="action-icon">📋</div>
+                        <h3 class="action-title">Mes réservations</h3>
+                        <p class="action-description">Consultez l'historique de vos réservations</p>
+                        <a href="#" class="btn btn-secondary">Voir l'historique</a>
+                    </div>
+
+                    <!-- Support client -->
+                    <div class="action-card">
+                        <div class="action-icon">💬</div>
+                        <h3 class="action-title">Support client</h3>
+                        <p class="action-description">Besoin d'aide ? Contactez notre équipe</p>
+                        <a href="#" class="btn btn-secondary">Nous contacter</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistiques -->
+            <section class="stats-section">
+                <h2 class="section-title">Statistiques</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Stations disponibles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Quartiers couverts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Réservations actives</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conseils utiles -->
+            <section class="quick-actions">
+                <h2 class="section-title">Conseils utiles</h2>
+                <div class="card">
+                    <h3>Comment utiliser SmartGaz efficacement ?</h3>
+                    <ul style="padding-left: 20px; color: var(--text-dark);">
+                        <li style="margin-bottom: 8px;">Vérifiez toujours la disponibilité avant de vous déplacer</li>
+                        <li style="margin-bottom: 8px;">Réservez votre bouteille en avance pour garantir sa disponibilité</li>
+                        <li style="margin-bottom: 8px;">Utilisez le paiement mobile pour un processus plus rapide</li>
+                        <li style="margin-bottom: 8px;">Notez les horaires d'ouverture des stations</li>
+                        <li>Contactez le support en cas de problème</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 SmartGaz - Yaoundé, Cameroun | <a href="../index.html">Déconnexion</a></p>
+        </footer>
+    </div>
+</body>
+</html>

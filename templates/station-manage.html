@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de la station - SmartGaz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/station-manage.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+</head>
+<body>
+    <div class="station-manage-page">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="dashboard.html" class="navbar-brand">
+                    <div class="navbar-logo">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                            <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                            <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                            <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                            <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h1 class="navbar-title">SmartGaz</h1>
+                </a>
+                <div class="navbar-location">
+                    <span class="navbar-location-icon">📍</span>
+                    <span>Yaoundé, Cameroun</span>
+                </div>
+                <div class="navbar-actions">
+                    <div class="navbar-user">
+                        <div class="user-avatar">{{avatar}}</div>
+                        <span class="user-name">{{title}} - Gérant</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="manage-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="dashboard.html">Accueil</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="stations.html">Stations</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Gestion de la station</span>
+            </nav>
+
+            <!-- Header -->
+            <header class="manage-header">
+                <h2>Gestion de votre station</h2>
+                <p>Mettez à jour le stock et les informations de votre station</p>
+            </header>
+
+            <!-- Info station -->
+            <section class="station-info-card">
+                <div class="station-header-info">
+                    <div class="station-icon-large">⛽</div>
+                    <div class="station-details">
+                        <h3>{{title}}</h3>
+                        <div class="station-meta">
+                            <span>📍</span>
+                            <span>{{station.address}}</span>
+                            <span>•</span>
+                            <span class="badge badge-success">Actif</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gestion du stock -->
+            <section class="manage-section">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-icon">📦</span>
+                        <h3 class="section-title">Gestion du stock</h3>
+                    </div>
+                </div>
+
+                <div class="stock-controls">
+                    <!-- Stock 6 kg -->
+                    <div class="stock-item">
+                        <div class="stock-item-header">
+                            <div class="stock-type">
+                                <span class="stock-type-icon">🧊</span>
+                                <div class="stock-type-info">
+                                    <h4>Bouteille 12.5 kg</h4>
+                                    <div class="stock-type-price">6 500 FCFA</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Toggle disponibilité -->
+                        {% if station.stock == 'disponible' %}
+                        <div class="status-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="status-label active">Disponible</span>
+                        </div>
+
+                        <!-- Compteur de stock -->
+                        <div class="stock-counter">
+                            <label class="counter-label">Quantité en stock :</label>
+                            <div class="counter-controls">
+                                <button type="button" class="counter-btn">−</button>
+                                <div class="counter-display">
+                                    <div class="counter-value">45</div>
+                                    <div class="counter-unit">bouteilles</div>
+                                </div>
+                                <button type="button" class="counter-btn">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Alerte stock -->
+                        <div class="stock-alert good">
+                            <span>✓</span>
+                            <span>Stock suffisant</span>
+                        </div>
+                    {% else %}
+                        <div class="status-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="status-label ">Vide</span>
+                        </div>
+
+                        <!-- Compteur de stock -->
+                        <div class="stock-counter">
+                            <label class="counter-label">Quantité en stock :</label>
+                            <div class="counter-controls">
+                                <button type="button" class="counter-btn">−</button>
+                                <div class="counter-display">
+                                    <div class="counter-value">0</div>
+                                    <div class="counter-unit">bouteille</div>
+                                </div>
+                                <button type="button" class="counter-btn">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Alerte stock -->
+                        <div class="stock-alert bad">
+                            <span>⚠️</span>
+                            <span>Stock Vide</span>
+                        </div>
+                    
+                    {% endif %}
+                    </div>
+
+
+                    <!-- Stock 12,5 kg -->
+                    <div class="stock-item">
+                        <div class="stock-item-header">
+                            <div class="stock-type">
+                                <span class="stock-type-icon">❄️</span>
+                                <div class="stock-type-info">
+                                    <h4>Bouteille 12,5 kg</h4>
+                                    <div class="stock-type-price">11 000 FCFA</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Toggle disponibilité -->
+                         {% if station.stock == 'disponible' %}
+                        <div class="status-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="status-label active">Disponible</span>
+                        </div>
+
+                        <!-- Compteur de stock -->
+                        <div class="stock-counter">
+                            <label class="counter-label">Quantité en stock :</label>
+                            <div class="counter-controls">
+                                <button type="button" class="counter-btn">−</button>
+                                <div class="counter-display">
+                                    <div class="counter-value">32</div>
+                                    <div class="counter-unit">bouteilles</div>
+                                </div>
+                                <button type="button" class="counter-btn">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Alerte stock -->
+                        <div class="stock-alert good">
+                            <span>✓</span>
+                            <span>Stock suffisant</span>
+                        </div>
+                        {% else %}
+                        <div class="status-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" >
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="status-label ">Vide</span>
+                        </div>
+
+                        <!-- Compteur de stock -->
+                        <div class="stock-counter">
+                            <label class="counter-label">Quantité en stock :</label>
+                            <div class="counter-controls">
+                                <button type="button" class="counter-btn">−</button>
+                                <div class="counter-display">
+                                    <div class="counter-value">0</div>
+                                    <div class="counter-unit">bouteille</div>
+                                </div>
+                                <button type="button" class="counter-btn">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Alerte stock -->
+                        <div class="stock-alert bad">
+                            <span>⚠️</span>
+                            <span>Stock Vide</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Actions rapides -->
+                <div class="manage-actions">
+                    <button type="button" class="btn btn-danger" onclick="window.location.href='{{ url_for('update_stock', stock='rupture') }}'">Marquer tout en rupture</button>
+                    <button type="button" class="btn btn-success" onclick="window.location.href='{{ url_for('update_stock', stock='disponible') }}'">Marquer disponible</button>
+                </div>
+            </section>
+
+            <!-- Informations de la station -->
+            <section class="manage-section">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-icon">ℹ️</span>
+                        <h3 class="section-title">Informations de la station</h3>
+                    </div>
+                </div>
+
+                <form class="info-form">
+                    <!-- Informations générales -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="station-name" class="form-label">Nom de la station</label>
+                            <input 
+                                type="text" 
+                                id="station-name" 
+                                class="form-input" 
+                                value="{{title}}"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="station-quartier" class="form-label">Quartier</label>
+                            <select id="station-quartier" class="form-input">
+                                <option value="bastos" selected>Bastos</option>
+                                <option value="melen">Melen</option>
+                                <option value="ngoa-ekelle">Ngoa-Ekellé</option>
+                                <option value="emana">Emana</option>
+                                <option value="odza">Odza</option>
+                                <option value="essos">Essos</option>
+                                <option value="cite-verte">Cité Verte</option>
+                                <option value="mvog-ada">Mvog-Ada</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Adresse -->
+                    <div class="form-group">
+                        <label for="station-address" class="form-label">Adresse complète</label>
+                        <input 
+                            type="text" 
+                            id="station-address" 
+                            class="form-input" 
+                            value="{{station.address}}"
+                            required
+                        >
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="station-phone" class="form-label">Téléphone</label>
+                            <input 
+                                type="tel" 
+                                id="station-phone" 
+                                class="form-input" 
+                                value="{{station.tel}}"
+                                pattern="[6][0-9]{8}"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Prix -->
+                    <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">Tarification</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price-6kg" class="form-label">Prix bouteille 12.5 kg (FCFA)</label>
+                            <input 
+                                type="number" 
+                                id="price-6kg" 
+                                class="form-input" 
+                                value="6500"
+                                min="0"
+                                step="100"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="price-12kg" class="form-label">Prix bouteille 35 kg (FCFA)</label>
+                            <input 
+                                type="number" 
+                                id="price-12kg" 
+                                class="form-input" 
+                                value="18200"
+                                min="0"
+                                step="100"
+                                required
+                            >
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Horaires d'ouverture -->
+            <section class="manage-section">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-icon">🕐</span>
+                        <h3 class="section-title">Horaires d'ouverture</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-grid">
+                    <div class="schedule-row">
+                        <div class="schedule-day">Lundi</div>
+                        <div class="schedule-inputs">
+                            <input type="time" value="07:00">
+                            <span class="schedule-separator">-</span>
+                            <input type="time" value="19:00">
+                        </div>
+                        <div class="schedule-checkbox">
+                            <input type="checkbox" id="closed-monday">
+                            <label for="closed-monday">Fermé</label>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-day">Mardi</div>
+                        <div class="schedule-inputs">
+                            <input type="time" value="07:00">
+                            <span class="schedule-separator">-</span>
+                            <input type="time" value="19:00">
+                        </div>
+                        <div class="schedule-checkbox">
+                            <input type="checkbox" id="closed-tuesday">
+                            <label for="closed-tuesday">Fermé</label>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-day">Mercredi</div>
+                        <div class="schedule-inputs">
+                            <input type="time" value="07:00">
+                            <span class="schedule-separator">-</span>
+                            <input type="time" value="19:00">
+                        </div>
+                        <div class="schedule-checkbox">
+                            <input type="checkbox" id="closed-wednesday">
+                            <label for="closed-wednesday">Fermé</label>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-day">Jeudi</div>
+                        <div class="schedule-inputs">
+                            <input type="time" value="07:00">
+                            <span class="schedule-separator">-</span>
+                            <input type="time" value="19:00">
+                        </div>
+                        <div class="schedule-checkbox">
+                            <input type="checkbox" id="closed-thursday">
+                            <label for="closed-thursday">Fermé</label>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-day">Vendredi</div>
+                        <div class="schedule-inputs">
+                            <input type="time" value="07:00">
+                            <span class="schedule-separator">-</span>
+                            <input type="time" value="19:00">
+                        </div>
+                        <div class="schedule-checkbox">
+                            <input type="checkbox" id="closed-friday">
+                            <label for="closed-friday">Fermé</label>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-day">Samedi</div>
+                        <div class="schedule-inputs">
+                            <input type="time" value="08:00">
+                            <span class="schedule-separator">-</span>
+                            <input type="time" value="18:00">
+                        </div>
+                        <div class="schedule-checkbox">
+                            <input type="checkbox" id="closed-saturday">
+                            <label for="closed-saturday">Fermé</label>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-day">Dimanche</div>
+                        <div class="schedule-inputs">
+                            <input type="time" value="08:00">
+                            <span class="schedule-separator">-</span>
+                            <input type="time" value="14:00">
+                        </div>
+                        <div class="schedule-checkbox">
+                            <input type="checkbox" id="closed-sunday" checked>
+                            <label for="closed-sunday">Fermé</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Historique des modifications -->
+            <section class="history-section">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-icon">📊</span>
+                        <h3 class="section-title">Historique des modifications</h3>
+                    </div>
+                </div>
+
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-info">
+                            <div class="history-action">Stock 6 kg mis à jour</div>
+                            <div class="history-details">Quantité modifiée : 50 → 45 bouteilles</div>
+                        </div>
+                        <div class="history-time">Il y a 2 heures</div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-info">
+                            <div class="history-action">Horaires modifiés</div>
+                            <div class="history-details">Dimanche : Ouvert → Fermé</div>
+                        </div>
+                        <div class="history-time">Il y a 1 jour</div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-info">
+                            <div class="history-action">Prix mis à jour</div>
+                            <div class="history-details">Bouteille 12,5 kg : 10 800 → 11 000 FCFA</div>
+                        </div>
+                        <div class="history-time">Il y a 3 jours</div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-info">
+                            <div class="history-action">Réapprovisionnement</div>
+                            <div class="history-details">Stock 6 kg : +50 bouteilles</div>
+                        </div>
+                        <div class="history-time">Il y a 5 jours</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actions finales -->
+            <div class="manage-actions">
+                <a href="stations.html" class="btn btn-secondary">Annuler</a>
+                <button type="submit" class="btn btn-primary">Enregistrer toutes les modifications</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 SmartGaz - Yaoundé, Cameroun</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+[
+    {
+        "position": 1,
+        "lsig": "AB86z5UoXh_iUQ-5uzCbpSN7vbdz",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+Nkolndongo,+%C3%A0+Cote+College+Siantou,+Rue+ze+Mendouga+Quartier+Nkolndongo,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bc563335384cf:0xb4c0a87a8af0e89f?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIHhAA&hl=en&gl=us"
+        },
+        "place_id": "13024595366625994911",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=13024595366625994911&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.8575141,
+            "longitude": 11.5289
+        },
+        "title": "TotalEnergies Nkolndongo",
+        "phone": "+237 6 70 95 00 00",
+        "address": "à Cote College Siantou, Rue ze Mendouga Quartier Nkolndongo",
+        "hours": "Open · Closes 10 PM"
+    },
+    {
+        "position": 2,
+        "lsig": "AB86z5WKnTWWNidf181Dmfrltwx7",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+NGOUSSO,+Apres+le+Transformateur,+Rue+1,+590+Carrefour+Ngousso,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bc5dd2e0495f5:0x1b97018f1ab744d4?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIHRAA&hl=en&gl=us"
+        },
+        "place_id": "1988059474647532756",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=1988059474647532756&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.8980565,
+            "longitude": 11.549872
+        },
+        "title": "TotalEnergies NGOUSSO",
+        "phone": "+237 6 79 84 35 11",
+        "address": "Apres le Transformateur, Rue 1, 590 Carrefour Ngousso",
+        "hours": "Open · Closes 10 PM"
+    },
+    {
+        "position": 3,
+        "lsig": "AB86z5UNeH13ngwafm7ViY4lui13",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+Nkolnda,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bd97ffd27b491:0xca1f656855df61e4?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIHBAA&hl=en&gl=us"
+        },
+        "place_id": "14564471218731180516",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=14564471218731180516&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.7492468,
+            "longitude": 11.535864
+        },
+        "title": "TotalEnergies Nkolnda",
+        "phone": "+237 6 70 95 00 00",
+        "address": "Yaoundé, Cameroon",
+        "hours": "Open · Closes 12 AM"
+    },
+    {
+        "position": 4,
+        "lsig": "AB86z5XImscVYzTSF23QrUpxCpeb",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+Nsimeyong,+Situ%C3%A9e+au+Quartier+Nsimeyong,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bcfdbc7731c53:0x1f689637dd361473?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIGxAA&hl=en&gl=us"
+        },
+        "place_id": "2263223979432350835",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=2263223979432350835&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.8344824,
+            "longitude": 11.494475
+        },
+        "title": "TotalEnergies Nsimeyong",
+        "phone": "+237 6 70 95 00 00",
+        "address": "Située au Quartier Nsimeyong",
+        "hours": "Open · Closes 10 PM"
+    },
+    {
+        "position": 5,
+        "lsig": "AB86z5V1G9-ZyYhntk1S11LJp9fo",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+Odza,+Situ%C3%A9e+sur+la+route+de+l'a%C3%A9roport,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bda7f8873d5b7:0x7f86ce310a0c5da3?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIGhAA&hl=en&gl=us"
+        },
+        "place_id": "9189258799713377699",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=9189258799713377699&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.781117,
+            "longitude": 11.524419
+        },
+        "title": "TotalEnergies Odza",
+        "phone": "+237 6 70 95 00 00",
+        "address": "Située sur la route de l'aéroport",
+        "hours": "Open · Closes 12 AM"
+    },
+    {
+        "position": 6,
+        "lsig": "AB86z5XTfbWz7Ygc7FCslO-1fY7R",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+R.P.+NLONGKAK,+En+Face+De+La+Boulangerie+Centrale,+N1+Rond+Point+Nlongkak,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bcf66b0ae4fab:0x5ce20fe2f222529b?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIGBAA&hl=en&gl=us"
+        },
+        "place_id": "6692929463625339547",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=6692929463625339547&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.8837097,
+            "longitude": 11.518475
+        },
+        "title": "TotalEnergies R.P. NLONGKAK",
+        "phone": "+237 6 70 95 00 00",
+        "address": "En Face De La Boulangerie Centrale, N1 Rond Point Nlongkak",
+        "hours": "Open · Closes 12 AM"
+    },
+    {
+        "position": 7,
+        "lsig": "AB86z5WnERA-34sfcmFG3OdI8dzt",
+        "service_options": {
+            "onsite_services": true
+        },
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+Melen+1,+Rte+de+Melen+Carrefour+Melen+au+Niveau+Des+Feux+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bcfa148febc05:0x7832bee2d7757793?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIGRAA&hl=en&gl=us"
+        },
+        "place_id": "8661194914873571219",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=8661194914873571219&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.8641598,
+            "longitude": 11.496767
+        },
+        "title": "TotalEnergies Melen 1",
+        "phone": "+237 6 70 95 00 00",
+        "address": "Rte de Melen Carrefour Melen au Niveau Des Feux Yaoundé",
+        "hours": "Open · Closes 12 AM"
+    },
+    {
+        "position": 8,
+        "lsig": "AB86z5VIDJxRFOJg9mpTHQw4tmjI",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+NKOLMESSENG,+Situ%C3%A9e+au+Quartier+Nkolmesseng,+Apres+le+Lyc%C3%A9e,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bc5b9add8a94f:0x71029a43735b903d?sa=X&ved=2ahUKEwi9tOvB48mSAxVfM1kFHSzEMTYQ48ADegQIFxAA&hl=en&gl=us"
+        },
+        "place_id": "8143240690728144957",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=8143240690728144957&q=Les+stations+Total+Energies+de+Yaounde+a+proximit%C3%A9+de+Nkoldongo",
+        "gps_coordinates": {
+            "latitude": 3.8844275,
+            "longitude": 11.556877
+        },
+        "title": "TotalEnergies NKOLMESSENG",
+        "phone": "+237 6 70 95 00 00",
+        "address": "Située au Quartier Nkolmesseng, Apres le Lycée",
+        "hours": "Open · Closes 12 AM"
+    }
+]

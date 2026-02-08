@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - SmartGaz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css')}}">
+</head>
+<body>
+    <!-- Page d'inscription -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <svg width="60" height="60" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                        <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                        <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                        <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                        <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">Créer un compte</h1>
+                <p class="auth-subtitle">Rejoignez SmartGaz dès maintenant</p>
+            </div>
+
+            <!-- Formulaire d'inscription -->
+            <form class="auth-form"  action="{{ url_for('register') }}" method="post">
+                <!-- Nom complet -->
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Nom complet</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">👤</span>
+                        <input 
+                            type="text" 
+                            id="fullname" 
+                            name="fullname" 
+                            class="form-input" 
+                            placeholder="Votre nom"
+                            minlength="3"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Adresse mail -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Adresse mail</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">📧</span>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="votre@email.com"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Numéro de téléphone -->
+                <div class="form-group">
+                    <label for="phone" class="form-label">Numéro de téléphone</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">📱</span>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            class="form-input" 
+                            placeholder="6 XX XX XX XX"
+                            pattern="[6][0-9]{8}"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Quartier (optionnel) -->
+                <div class="form-group">
+                    <label for="quartier" class="form-label">Quartier</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">📍</span>
+                        <select id="quartier" name="quartier" class="form-input" required>
+                            <option value="">Sélectionnez votre quartier</option>
+                            <option value="bastos">Bastos</option>
+                            <option value="biteng">Biteng</option>
+                            <option value="biyem-assi">Biyem-Assi</option>
+                            <option value="briqueterie">Briqueterie</option>
+                            <option value="cite-verte">Cité Verte</option>
+                            <option value="ekoundoum">Ekoundoum</option>
+                            <option value="emana">Emana</option>
+                            <option value="essos">Essos</option>
+                            <option value="etoudi">Etoudi</option>
+                            <option value="fouda">Fouda</option>
+                            <option value="manguier">Manguier</option>
+                            <option value="mballa-ii">Mballa II</option>
+                            <option value="melen">Melen</option>
+                            <option value="mendong">Mendong</option>
+                            <option value="mokolo">Messa</option>
+                            <option value="mimboman">Mimboman</option>
+                            <option value="mvog-ada">Mvog-Ada</option>
+                            <option value="ngoa-ekelle">Ngoa-Ekellé</option>
+                            <option value="nkolbisson">Nkolbisson</option>
+                            <option value="nkolmesseng">Nkolmesseng</option> <option value="nkolnda">Nkolnda</option>
+                            <option value="nsimeyong">Nsimeyong</option>
+                            <option value="odza">Odza</option>
+                            <option value="soa">Soa</option>
+                            <option value="tsinga">Tsinga</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Mot de passe -->
+                <div class="form-group">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="Minimum 6 caractères"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Confirmation mot de passe -->
+                <div class="form-group">
+                    <label for="confirm-password" class="form-label">Confirmer le mot de passe</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="confirm-password" 
+                            name="confirm-password" 
+                            class="form-input" 
+                            placeholder="Retapez votre mot de passe"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Conditions d'utilisation -->
+                <div class="form-group">
+                    <label class="remember-me">
+                        <input type="checkbox" name="terms" required>
+                        <span>J'accepte les <a href="#">conditions d'utilisation</a></span>
+                    </label>
+                </div>
+
+                <!-- Bouton d'inscription -->
+                <button type="submit" class="btn btn-primary btn-full auth-submit">
+                    Créer mon compte
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>OU</span>
+            </div>
+
+            <!-- Lien vers connexion -->
+            <div class="auth-switch">
+                <p>Vous avez déjà un compte ? <a href="{{ url_for('login') }}">Se connecter</a></p>
+            </div>
+        </div>
+
+        <!-- Retour à l'accueil -->
+        <div class="back-home">
+            <a href="{{ url_for('index') }}">← Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <!-- Note: Le formulaire pourrait être lié au dashboard.html dans une vraie application -->
+</body>
+</html>

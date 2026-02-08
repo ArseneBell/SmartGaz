@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon profil - SmartGaz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css')}}">
+</head>
+<body>
+    <div class="profile-page">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="dashboard.html" class="navbar-brand">
+                    <div class="navbar-logo">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                            <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                            <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                            <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                            <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h1 class="navbar-title">SmartGaz</h1>
+                </a>
+                <div class="navbar-location">
+                    <span class="navbar-location-icon">📍</span>
+                    <span>Yaoundé, Cameroun</span>
+                </div>
+                <div class="navbar-actions">
+                    <div class="navbar-user">
+                        <div class="user-avatar">{{avatar}}</div>
+                        <span class="user-name">{{session['name']}}</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="profile-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="dashboard.html">Accueil</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Mon profil</span>
+            </nav>
+
+            <!-- Header Profil -->
+            <header class="profile-header">
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar-large">{{avatar}}</div>
+                    <h2 class="profile-name">{{user.nom}}</h2>
+                    <p class="profile-email">{{user.email}}</p>
+                </div>
+            </header>
+
+            <!-- Statistiques utilisateur -->
+            <div class="user-stats">
+                <div class="stat-box">
+                    <div class="stat-icon">📋</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-description">Réservations totales</div>
+                </div>
+                <div class="stat-box secondary">
+                    <div class="stat-icon">✓</div>
+                    <div class="stat-number">1</div>
+                    <div class="stat-description">Réservations complétées</div>
+                </div>
+                <div class="stat-box accent">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-number">1</div>
+                    <div class="stat-description">En attente</div>
+                </div>
+            </div>
+
+            <!-- Informations personnelles -->
+            <section class="profile-section">
+                <div class="profile-section-header">
+                    <span class="profile-section-icon">👤</span>
+                    <h3 class="profile-section-title">Informations personnelles</h3>
+                </div>
+
+                <form class="profileform" action="{{ url_for('update_profile') }}" method="post">
+                    <div class="form-group">
+                        <label for="fullname" class="form-label">Nom complet</label>
+                        <input 
+                            type="text" 
+                            id="fullname" 
+                            class="form-input" 
+                            name = 'fullname'
+                            value="{{user.nom}}"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Adresse email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name = 'email'
+                            class="form-input" 
+                            value="{{user.email}}"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Numéro de téléphone</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone"
+                            class="form-input" 
+                            value="{{user.tel}}"
+                            pattern="[6][0-9]{8}"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quartier" class="form-label">Quartier de résidence</label>
+                        <select id="quartier" name="quartier" class="form-input">
+                            <option value="{{user.quartier}}">{{user.quartier}}</option>
+                            <option value="bastos">Bastos</option>
+                            <option value="biteng">Biteng</option>
+                            <option value="biyem-assi">Biyem-Assi</option>
+                            <option value="briqueterie">Briqueterie</option>
+                            <option value="cite-verte">Cité Verte</option>
+                            <option value="ekoundoum">Ekoundoum</option>
+                            <option value="emana">Emana</option>
+                            <option value="essos">Essos</option>
+                            <option value="etoudi">Etoudi</option>
+                            <option value="fouda">Fouda</option>
+                            <option value="manguier">Manguier</option>
+                            <option value="mballa-ii">Mballa II</option>
+                            <option value="melen">Melen</option>
+                            <option value="mendong">Mendong</option>
+                            <option value="mokolo">Messa</option>
+                            <option value="mimboman">Mimboman</option>
+                            <option value="mvog-ada">Mvog-Ada</option>
+                            <option value="ngoa-ekelle">Ngoa-Ekellé</option>
+                            <option value="nkolbisson">Nkolbisson</option>
+                            <option value="nkolmesseng">Nkolmesseng</option> <option value="nkolnda">Nkolnda</option>
+                            <option value="nsimeyong">Nsimeyong</option>
+                            <option value="odza">Odza</option>
+                            <option value="soa">Soa</option>
+                            <option value="tsinga">Tsinga</option>
+                        </select>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button type="button" class="btn btn-secondary">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Sécurité -->
+            <section class="profile-section">
+                <div class="profile-section-header">
+                    <span class="profile-section-icon">🔒</span>
+                    <h3 class="profile-section-title">Sécurité et mot de passe</h3>
+                </div>
+
+                <form class="profile-form">
+                    <div class="form-group">
+                        <label for="current-password" class="form-label">Mot de passe actuel</label>
+                        <input 
+                            type="password" 
+                            id="current-password" 
+                            class="form-input" 
+                            placeholder="Entrez votre mot de passe actuel"
+                        >
+                    </div>
+
+                    <hr class="form-section-divider">
+
+                    <div class="form-group">
+                        <label for="new-password" class="form-label">Nouveau mot de passe</label>
+                        <input 
+                            type="password" 
+                            id="new-password" 
+                            class="form-input" 
+                            placeholder="Minimum 6 caractères"
+                            minlength="6"
+                        >
+                        <div class="password-strength">
+                            <div class="strength-indicator">
+                                <div class="strength-bar medium"></div>
+                            </div>
+                            <p class="strength-text medium">Force du mot de passe : Moyenne</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password" class="form-label">Confirmer le nouveau mot de passe</label>
+                        <input 
+                            type="password" 
+                            id="confirm-password" 
+                            class="form-input" 
+                            placeholder="Retapez votre nouveau mot de passe"
+                            minlength="6"
+                        >
+                    </div>
+
+                    <div class="profile-actions">
+                        <button type="submit" class="btn btn-primary">Modifier le mot de passe</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Préférences de notification -->
+            <section class="profile-section">
+                <div class="profile-section-header">
+                    <span class="profile-section-icon">🔔</span>
+                    <h3 class="profile-section-title">Notifications</h3>
+                </div>
+
+                <div class="preferences-grid">
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <div class="preference-title">Alertes de pénurie</div>
+                            <div class="preference-description">Recevoir des notifications en cas de pénurie de gaz dans votre quartier</div>
+                        </div>
+                        <div class="preference-control">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <div class="preference-title">Confirmations de réservation</div>
+                            <div class="preference-description">Recevoir un SMS/email à chaque réservation confirmée</div>
+                        </div>
+                        <div class="preference-control">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <div class="preference-title">Rappels de retrait</div>
+                            <div class="preference-description">Recevoir un rappel 2h avant l'expiration de votre réservation</div>
+                        </div>
+                        <div class="preference-control">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <div class="preference-title">Offres promotionnelles</div>
+                            <div class="preference-description">Recevoir des informations sur les offres spéciales et promotions</div>
+                        </div>
+                        <div class="preference-control">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <div class="preference-title">Newsletter</div>
+                            <div class="preference-description">Recevoir la newsletter mensuelle SmartGaz</div>
+                        </div>
+                        <div class="preference-control">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions" style="margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-primary">Enregistrer les préférences</button>
+                </div>
+            </section>
+
+            <!-- Historique d'activité -->
+            <section class="profile-section">
+                <div class="profile-section-header">
+                    <span class="profile-section-icon">📊</span>
+                    <h3 class="profile-section-title">Activité récente</h3>
+                </div>
+
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">✅</div>
+                        <div class="activity-details">
+                            <div class="activity-description">Réservation confirmée</div>
+                            <div class="activity-meta">
+                                <span>Total Bastos</span>
+                                <span>•</span>
+                                <span>Bouteille 6 kg</span>
+                            </div>
+                        </div>
+                        <div class="activity-time">Il y a 2h</div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">💳</div>
+                        <div class="activity-details">
+                            <div class="activity-description">Paiement effectué</div>
+                            <div class="activity-meta">
+                                <span>5 500 FCFA</span>
+                                <span>•</span>
+                                <span>MTN Mobile Money</span>
+                            </div>
+                        </div>
+                        <div class="activity-time">Il y a 2h</div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">🔍</div>
+                        <div class="activity-details">
+                            <div class="activity-description">Recherche de stations</div>
+                            <div class="activity-meta">
+                                <span>6 stations consultées</span>
+                            </div>
+                        </div>
+                        <div class="activity-time">Il y a 5h</div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">✅</div>
+                        <div class="activity-details">
+                            <div class="activity-description">Réservation retirée</div>
+                            <div class="activity-meta">
+                                <span>Shell Ngoa-Ekellé</span>
+                                <span>•</span>
+                                <span>Bouteille 12,5 kg</span>
+                            </div>
+                        </div>
+                        <div class="activity-time">Il y a 2 jours</div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-details">
+                            <div class="activity-description">Profil mis à jour</div>
+                            <div class="activity-meta">
+                                <span>Quartier modifié</span>
+                            </div>
+                        </div>
+                        <div class="activity-time">Il y a 5 jours</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Zone de danger -->
+            <section class="danger-zone">
+                <div class="danger-zone-header">
+                    <span class="danger-zone-icon">⚠️</span>
+                    <h3 class="danger-zone-title">Zone de danger</h3>
+                </div>
+
+                <div class="danger-zone-content">
+                    <p><strong>Supprimer mon compte</strong></p>
+                    <p>La suppression de votre compte est définitive et irréversible. Toutes vos données seront perdues :</p>
+                    <ul>
+                        <li>Historique des réservations</li>
+                        <li>Informations personnelles</li>
+                        <li>Préférences de notification</li>
+                        <li>Statistiques d'utilisation</li>
+                    </ul>
+                </div>
+
+                <button type="button" class="btn btn-danger">Supprimer mon compte</button>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 SmartGaz - Yaoundé, Cameroun | <a href="dashboard.html">Retour au tableau de bord</a></p>
+        </footer>
+    </div>
+</body>
+</html>

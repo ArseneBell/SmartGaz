@@ -1,0 +1,378 @@
+/* ===================================
+   SMARTGAZ - STYLES LISTE DES STATIONS
+   Fichier: stations.css
+   Description: Styles pour la liste des stations
+   =================================== */
+
+/* --- PAGE STATIONS --- */
+.stations-page {
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- HEADER DE PAGE --- */
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--white);
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+}
+
+.page-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-subtitle {
+    font-size: 1.125rem;
+    opacity: 0.95;
+    margin-bottom: 0;
+}
+
+/* --- FILTRES --- */
+.filters-section {
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.filters-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--text-dark);
+}
+
+.filter-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background-color: var(--white);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* --- LISTE DES STATIONS --- */
+.stations-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.stations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* --- CARTE STATION --- */
+.station-card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.station-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.station-header {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.station-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.station-icon {
+    font-size: 1.5rem;
+}
+
+.station-location {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.location-icon {
+    font-size: 1rem;
+}
+
+.station-body {
+    padding: var(--spacing-md);
+    flex: 1;
+}
+
+.station-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-xs) 0;
+}
+
+.info-label {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.info-value {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.distance-badge {
+    background-color: #E3F2FD;
+    color: #1976D2;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* --- STATUT DE STOCK --- */
+.stock-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.stock-status.available {
+    background-color: #E8F5E9;
+}
+
+.stock-status.empty {
+    background-color: #FFEBEE;
+}
+
+.stock-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.stock-icon {
+    font-size: 1.5rem;
+}
+
+.stock-label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.stock-status.available .stock-label {
+    color: #2E7D32;
+}
+
+.stock-status.empty .stock-label {
+    color: #C62828;
+}
+
+.stock-badge {
+    font-size: 0.875rem;
+}
+
+/* --- PRIX --- */
+.price-info {
+    background-color: var(--bg-light);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.price-label {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.price-values {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.price-item {
+    flex: 1;
+}
+
+.price-type {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 2px;
+}
+
+.price-amount {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* --- FOOTER CARTE --- */
+.station-footer {
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.reserve-button {
+    width: 100%;
+}
+
+.reserve-button:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.reserve-button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- MESSAGE VIDE --- */
+.no-stations {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--text-light);
+}
+
+.no-stations-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.no-stations h3 {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* --- LÉGENDE --- */
+.legend-section {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.legend-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+}
+
+.legend-items {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .filters-container {
+        flex-direction: column;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .stations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .price-values {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .legend-items {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .page-title {
+        font-size: 1.25rem;
+    }
+    
+    .station-name {
+        font-size: 1.125rem;
+    }
+}

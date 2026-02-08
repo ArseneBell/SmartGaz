@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation - SmartGaz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+    <div class="reservation-page">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="{{ url_for('acceuil') }}" class="navbar-brand">
+                    <div class="navbar-logo">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                            <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                            <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                            <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                            <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h1 class="navbar-title">SmartGaz</h1>
+                </a>
+                <div class="navbar-location">
+                    <span class="navbar-location-icon">📍</span>
+                    <span>Yaoundé, Cameroun</span>
+                </div>
+                <div class="navbar-actions">
+                    <div class="navbar-user">
+                        <div class="user-avatar">{{avatar}}</div>
+                        <span class="user-name">{{session['name']}}</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="reservation-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="{{ url_for('index') }}">Accueil</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="{{ url_for('acceuil') }}">Stations</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Réservation</span>
+            </nav>
+
+            <!-- Titre -->
+            <h2 class="reservation-title">Réserver une bouteille de gaz</h2>
+            <p class="reservation-subtitle">Complétez votre réservation en quelques étapes</p>
+
+            <!-- Résumé de la station -->
+            <section class="station-summary">
+                <div class="summary-header">
+                    <div class="summary-icon">⛽</div>
+                    <div class="summary-info">
+                        <h3>{{title}}</h3>
+                        <div class="summary-location">
+                            <span>📍</span>
+                            <span>{{station.address}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-details">
+                    <div class="summary-item">
+                        <span class="summary-label">Telephone</span>
+                        <span class="summary-value">{{station.tel}}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Horaires</span>
+                        <span class="summary-value">{{station.hours}}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Disponibilité</span>
+                        <span class="summary-value">
+                            <span class="badge badge-success">{{station.stock}}</span>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formulaire de réservation -->
+            <form>
+                <section class="reservation-form-section">
+                    <h3 class="form-section-title">1. Choisissez votre bouteille</h3>
+                    
+                    <!-- Options de bouteilles -->
+                    <div class="bottle-options">
+                        <!-- Bouteille 6 kg -->
+                        <div class="bottle-option">
+                            <input type="radio" id="bottle-6kg" name="bottle-type" value="6kg" checked>
+                            <label for="bottle-6kg" class="bottle-label">
+                                <div class="bottle-icon">🧊</div>
+                                <div class="bottle-type">12.5 kg</div>
+                                <div class="bottle-price">6 500 FCFA</div>
+                                <div class="bottle-description">Idéal pour les petits foyers</div>
+                            </label>
+                        </div>
+
+                        <!-- Bouteille 12,5 kg -->
+                        <div class="bottle-option">
+                            <input type="radio" id="bottle-12kg" name="bottle-type" value="12.5kg">
+                            <label for="bottle-12kg" class="bottle-label">
+                                <div class="bottle-icon">❄️</div>
+                                <div class="bottle-type">35 kg</div>
+                                <div class="bottle-price">18 200 FCFA</div>
+                                <div class="bottle-description">Idéal pour les restaurants</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Informations supplémentaires -->
+                    <div class="additional-info">
+                        <h4>Informations importantes :</h4>
+                        <ul>
+                            <li>Les prix incluent la consigne de la bouteille</li>
+                            <li>Réservation valable pendant 24 heures</li>
+                            <li>Apportez une pièce d'identité lors du retrait</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="reservation-form-section">
+                    <h3 class="form-section-title">2. Quantité</h3>
+                    
+                    <!-- Sélecteur de quantité -->
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Nombre de bouteilles :</span>
+                        <div class="quantity-controls">
+                            <button type="button" class="quantity-btn" disabled>−</button>
+                            <span class="quantity-value">1</span>
+                            <button type="button" class="quantity-btn" disabled>+</button>
+                        </div>
+                    </div>
+
+                    <div class="info-message">
+                        <p>Vous pouvez réserver une seule bouteille à la fois pour permettre à tous nos clients d'avoir accès au gaz.</p>
+                    </div>
+                </section>
+
+                <!-- Récapitulatif de la commande -->
+                <section class="order-summary">
+                    <h3 class="form-section-title">Récapitulatif</h3>
+                    
+                    <div class="summary-row">
+                        <span class="summary-row-label">Type de bouteille</span>
+                        <span class="summary-row-value">12.5 kg</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-row-label">Quantité</span>
+                        <span class="summary-row-value">1</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-row-label">Prix unitaire</span>
+                        <span class="summary-row-value">6 500 FCFA</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span class="summary-total-label">Total à payer</span>
+                        <span class="summary-total-value">6 500 FCFA</span>
+                    </div>
+                </section>
+
+                <!-- Actions -->
+                <div class="reservation-actions">
+                    <a href="{{ url_for('acceuil') }}" class="btn btn-secondary">Annuler</a>
+                    <a href="{{ url_for('payment', title=title) }}" class="btn btn-primary">Confirmer la réservation</a>
+                </div>
+            </form>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 SmartGaz - Yaoundé, Cameroun</p>
+        </footer>
+    </div>
+</body>
+</html>

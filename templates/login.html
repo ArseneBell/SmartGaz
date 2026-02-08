@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - SmartGaz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css')}}">
+</head>
+<body>
+    <!-- Page de connexion -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <svg width="60" height="60" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="40" cy="40" r="38" fill="#2196F3" stroke="#1976D2" stroke-width="4"/>
+                        <path d="M40 15 L50 35 L30 35 Z" fill="white"/>
+                        <rect x="25" y="35" width="30" height="30" rx="3" fill="white"/>
+                        <circle cx="40" cy="50" r="8" fill="#FF9800"/>
+                        <path d="M37 47 Q40 42 43 47" stroke="#FFF" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">Connexion</h1>
+                <p class="auth-subtitle">Accédez à votre compte SmartGaz</p>
+            </div>
+
+            <!-- Formulaire de connexion -->
+            <form class="auth-form" method="post" action="{{ url_for('login') }}">
+                <!-- Numéro de téléphone -->
+                <div class="form-group">
+                    <label for="phone" class="form-label">Email</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">📧</span>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="votre@email.com"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Mot de passe -->
+                <div class="form-group">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="Votre mot de passe"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        <span>Se souvenir de moi</span>
+                    </label>
+                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                </div>
+
+                <!-- Bouton de connexion -->
+                <button type="submit" class="btn btn-primary btn-full auth-submit">
+                    Se connecter
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>OU</span>
+            </div>
+
+            <!-- Lien vers inscription -->
+            <div class="auth-switch">
+                <p>Vous n'avez pas de compte ? <a href="{{ url_for('register') }}">Créer un compte</a></p>
+            </div>
+        </div>
+
+        <!-- Retour à l'accueil -->
+        <div class="back-home">
+            <a href="{{ url_for('index') }}">← Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <!-- Note: Le formulaire pourrait être lié au dashboard.html dans une vraie application -->
+    <!-- Pour la démo, on peut utiliser: <form action="dashboard.html" method="get"> -->
+</body>
+</html>

@@ -1,0 +1,412 @@
+/* ===================================
+   SMARTGAZ - STYLES RÉSERVATION
+   Fichier: reservation.css
+   Description: Styles pour la page de réservation
+   =================================== */
+
+/* --- PAGE RÉSERVATION --- */
+.reservation-page {
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+.reservation-content {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+/* --- BREADCRUMB --- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.95rem;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: var(--text-light);
+}
+
+.breadcrumb-current {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* --- TITRE DE PAGE --- */
+.reservation-title {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.reservation-subtitle {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* --- SECTION STATION --- */
+.station-summary {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    border-left: 4px solid var(--primary-color);
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.summary-icon {
+    font-size: 2.5rem;
+}
+
+.summary-info h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.summary-location {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-light);
+}
+
+.summary-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.summary-label {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.summary-value {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* --- FORMULAIRE DE RÉSERVATION --- */
+.reservation-form-section {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-section-title {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* --- SÉLECTION DE BOUTEILLE --- */
+.bottle-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.bottle-option {
+    position: relative;
+}
+
+.bottle-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.bottle-label {
+    display: block;
+    padding: var(--spacing-lg);
+    border: 3px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.bottle-option input[type="radio"]:checked + .bottle-label {
+    border-color: var(--primary-color);
+    background-color: #E3F2FD;
+}
+
+.bottle-label:hover {
+    border-color: var(--primary-color);
+}
+
+.bottle-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.bottle-type {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.bottle-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.bottle-description {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+/* --- QUANTITÉ --- */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    background-color: var(--bg-light);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.quantity-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.quantity-btn {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--white);
+    color: var(--primary-color);
+    border-radius: var(--radius-md);
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.quantity-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.quantity-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    min-width: 40px;
+    text-align: center;
+}
+
+/* --- INFORMATIONS SUPPLÉMENTAIRES --- */
+.additional-info {
+    background-color: #E3F2FD;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.additional-info h4 {
+    color: var(--primary-dark);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.additional-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.additional-info li {
+    padding: var(--spacing-xs) 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.additional-info li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* --- RÉCAPITULATIF --- */
+.order-summary {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.summary-row-label {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.summary-row-value {
+    color: var(--text-dark);
+}
+
+.summary-total {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.summary-total-label {
+    color: var(--text-dark);
+}
+
+.summary-total-value {
+    color: var(--primary-color);
+}
+
+/* --- ACTIONS --- */
+.reservation-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.reservation-actions .btn {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* --- MESSAGE D'INFO --- */
+.info-message {
+    background-color: #FFF3E0;
+    border-left: 4px solid var(--accent-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+}
+
+.info-message p {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.info-message p::before {
+    content: 'ℹ️';
+    font-size: 1.25rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .reservation-title {
+        font-size: 1.5rem;
+    }
+    
+    .summary-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .summary-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .bottle-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .reservation-actions {
+        flex-direction: column;
+    }
+    
+    .reservation-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservation-title {
+        font-size: 1.25rem;
+    }
+    
+    .quantity-selector {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .breadcrumb {
+        flex-wrap: wrap;
+    }
+}

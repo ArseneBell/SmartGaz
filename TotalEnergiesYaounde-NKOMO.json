@@ -1,0 +1,20 @@
+[
+    {
+        "position": 1,
+        "lsig": "AB86z5WHTJ7bJY5glmo-D7Ix4Fpn",
+        "links": {
+            "website": "https://totalenergies.cm/",
+            "directions": "https://www.google.com/maps/dir//TotalEnergies+NKOMO,+Situe+Face+Eldorado+Nkomo,+N10,+Yaound%C3%A9,+Cameroon/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x108bc5160b3f2605:0xc1a479b5a873d8ba?sa=X&ved=2ahUKEwjh3PCn5MmSAxUbomoFHXo4AEcQ48ADegQIFRAA&hl=en&gl=us"
+        },
+        "place_id": "13953411366622845114",
+        "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google_local&gl=us&google_domain=google.com&hl=en&location=Cameroon&ludocid=13953411366622845114&q=Les+stations+Total+Energies+du+quartier+NKOMO+a+Yaounde+Cameroun",
+        "gps_coordinates": {
+            "latitude": 3.8480206,
+            "longitude": 11.553572
+        },
+        "title": "TotalEnergies NKOMO",
+        "phone": "+237 6 70 95 00 00",
+        "address": "Situe Face Eldorado Nkomo, N10",
+        "hours": "Open · Closes 12 AM"
+    }
+]

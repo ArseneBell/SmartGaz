@@ -1,0 +1,459 @@
+/* ===================================
+   SMARTGAZ - STYLES PAIEMENT
+   Fichier: payment.css
+   Description: Styles pour la page de paiement mobile
+   =================================== */
+
+/* --- PAGE PAIEMENT --- */
+.payment-page {
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+.payment-content {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+/* --- ÉTAPES DE PROGRESSION --- */
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--border-color);
+    z-index: 0;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--white);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    transition: var(--transition);
+}
+
+.step-circle.completed {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.step-circle.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2);
+}
+
+.step-label {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+.step-circle.active ~ .step-label,
+.step-circle.completed ~ .step-label {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* --- TITRE DE SECTION --- */
+.payment-title {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.payment-subtitle {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+/* --- RÉCAPITULATIF DE COMMANDE --- */
+.order-recap {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.recap-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.recap-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.recap-label {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.recap-value {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.recap-total {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recap-total-label {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.recap-total-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* --- MÉTHODES DE PAIEMENT --- */
+.payment-methods {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.methods-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.payment-method {
+    position: relative;
+}
+
+.payment-method input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.method-label {
+    display: block;
+    padding: var(--spacing-lg);
+    border: 3px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    background-color: var(--white);
+}
+
+.payment-method input[type="radio"]:checked + .method-label {
+    border-color: var(--primary-color);
+    background-color: #E3F2FD;
+}
+
+.method-label:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.method-logo {
+    height: 50px;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.method-logo img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/* Logos simulés avec du texte stylisé */
+.mtn-logo {
+    background: linear-gradient(135deg, #FFCC00 0%, #FFB800 100%);
+    color: #000;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.orange-logo {
+    background: linear-gradient(135deg, #FF6600 0%, #FF5500 100%);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.method-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+/* --- FORMULAIRE DE PAIEMENT --- */
+.payment-form {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+/* --- ACTIONS DE PAIEMENT --- */
+.payment-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.payment-actions .btn {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* --- MESSAGE DE SÉCURITÉ --- */
+.security-message {
+    background-color: #E8F5E9;
+    border-left: 4px solid var(--secondary-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.security-icon {
+    font-size: 1.5rem;
+}
+
+.security-text {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* --- CONFIRMATION DE PAIEMENT --- */
+.payment-confirmation {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.confirmation-icon {
+    font-size: 5rem;
+    margin-bottom: var(--spacing-lg);
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.confirmation-title {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.confirmation-message {
+    color: var(--text-dark);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xl);
+}
+
+.confirmation-details {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    text-align: left;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: var(--text-light);
+}
+
+.detail-value {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.confirmation-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* --- INSTRUCTIONS DE RETRAIT --- */
+.pickup-instructions {
+    background-color: #FFF3E0;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.instructions-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.instructions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instructions-list li {
+    padding: var(--spacing-xs) 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+}
+
+.instructions-list li::before {
+    content: '✓';
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .payment-title {
+        font-size: 1.5rem;
+    }
+    
+    .progress-steps {
+        font-size: 0.875rem;
+    }
+    
+    .step-circle {
+        width: 35px;
+        height: 35px;
+        font-size: 0.875rem;
+    }
+    
+    .methods-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-actions {
+        flex-direction: column;
+    }
+    
+    .payment-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-title {
+        font-size: 1.25rem;
+    }
+    
+    .step-label {
+        font-size: 0.75rem;
+    }
+    
+    .confirmation-title {
+        font-size: 1.5rem;
+    }
+    
+    .confirmation-icon {
+        font-size: 4rem;
+    }
+}

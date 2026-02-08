@@ -1,0 +1,215 @@
+/* ===================================
+   SMARTGAZ - STYLES AUTHENTIFICATION
+   Fichier: auth.css
+   Description: Styles pour connexion et inscription
+   =================================== */
+
+/* --- CONTAINER PRINCIPAL --- */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: var(--spacing-md);
+}
+
+/* --- CARTE FORMULAIRE --- */
+.auth-card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    width: 100%;
+    max-width: 450px;
+}
+
+/* --- HEADER FORMULAIRE --- */
+.auth-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.auth-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.auth-title {
+    color: var(--text-dark);
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.auth-subtitle {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* --- FORMULAIRE --- */
+.auth-form {
+    margin-bottom: var(--spacing-md);
+}
+
+.auth-form .form-group:last-of-type {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* --- OPTIONS FORMULAIRE --- */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.875rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    font-size: 0.875rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* --- BOUTON SUBMIT --- */
+.auth-submit {
+    margin-bottom: var(--spacing-md);
+}
+
+/* --- DIVIDER --- */
+.auth-divider {
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+    position: relative;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.auth-divider span {
+    background-color: var(--white);
+    padding: 0 var(--spacing-md);
+    color: var(--text-light);
+    font-size: 0.875rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- LIEN ALTERNATIF --- */
+.auth-switch {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.auth-switch a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+/* --- RETOUR ACCUEIL --- */
+.back-home {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.back-home a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--white);
+    font-size: 0.95rem;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.back-home a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- VALIDATION VISUELLE --- */
+.form-input.error {
+    border-color: var(--danger-color);
+}
+
+.form-input.success {
+    border-color: var(--secondary-color);
+}
+
+.form-error {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-xs);
+    display: none;
+}
+
+.form-input.error + .form-error {
+    display: block;
+}
+
+/* --- ICÔNES DANS LES INPUTS --- */
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon .form-input {
+    padding-left: 44px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    font-size: 1.25rem;
+    pointer-events: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .auth-title {
+        font-size: 1.5rem;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+}
