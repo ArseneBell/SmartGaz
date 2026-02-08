@@ -175,7 +175,11 @@
                             </div>
                         </div>
                         <div class="station-footer">
+                            {% if station.stock == 'disponible'%}
                             <a href="{{ url_for('reservation', title=station.title) }}" class="btn btn-primary reserve-button">Réserver</a>
+                            {% else %}
+                            <button class="btn btn-secondary reserve-button disabled" disabled>Réserver</button>
+                            {% endif %}
                         </div>
                     </article>
 
