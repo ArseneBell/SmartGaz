@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css')}}">
 </head>
 <body>
+
+
+
+    
+
+
     <!-- Page de connexion -->
     <div class="auth-container">
         <div class="auth-card">
@@ -28,6 +34,8 @@
 
             <!-- Formulaire de connexion -->
             <form class="auth-form" method="post" action="{{ url_for('slogin') }}">
+
+                {% include "flash.html" %}
                 <!-- Numéro de téléphone -->
                 <div class="form-group">
                     <label for="title" class="form-label">Nom de la station</label>

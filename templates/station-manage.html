@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
 </head>
 <body>
+
     <div class="station-manage-page">
         <!-- Navigation -->
         <nav class="navbar">
@@ -61,6 +62,8 @@
                 <h2>Gestion de votre station</h2>
                 <p>Mettez à jour le stock et les informations de votre station</p>
             </header>
+
+            {% include "flash.html" %}
 
             <!-- Info station -->
             <section class="station-info-card">

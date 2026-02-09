@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css')}}">
 </head>
 <body>
+
+    
+
+
     <!-- Page d'inscription -->
     <div class="auth-container">
         <div class="auth-card">
@@ -28,6 +32,7 @@
 
             <!-- Formulaire d'inscription -->
             <form class="auth-form"  action="{{ url_for('register') }}" method="post">
+                {% include "flash.html" %}
                 <!-- Nom complet -->
                 <div class="form-group">
                     <label for="fullname" class="form-label">Nom complet</label>

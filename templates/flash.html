@@ -1,0 +1,27 @@
+<div class="container mt-3">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div id="flash-container">
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-animation" style="position: relative; padding-right: 35px;">
+            {{ message }}
+            <span class="close-btn" onclick="this.parentElement.style.display='none';" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; font-weight: bold;">
+                &times;
+            </span>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+</div>
+
+<script>
+    // Fermer les alertes après 5 secondes
+    setTimeout(function() {
+    let alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function(alert) {
+        alert.style.opacity = "0";
+        setTimeout(() => alert.style.display = "none", 600);
+    });
+}, 5000);
+</script>
