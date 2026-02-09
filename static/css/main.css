@@ -233,11 +233,30 @@ select.form-input {
 
 /* --- ALERTES --- */
 .alert {
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--spacing-md);
-    border-left: 4px solid;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: opacity 0.6s; /* Pour l'effet de fondu */
 }
+
+.alert-success { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+.alert-danger { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+
+.close-btn {
+    margin-left: 15px;
+    color: currentColor;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover { color: black; }
 
 .alert-info {
     background-color: #E3F2FD;
@@ -262,6 +281,26 @@ select.form-input {
     border-color: #4CAF50;
     color: #2E7D32;
 }
+
+/* Définition de l'animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Commence 20px plus haut */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Finit à sa place réelle */
+    }
+}
+
+/* Application de l'animation sur le conteneur ou les alertes */
+.alert-animation {
+    animation: slideIn 0.5s ease-out forwards;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Petit bonus : une ombre pour le relief */
+}
+
+
 
 /* --- CONTAINER --- */
 .container {

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css')}}">
 </head>
 <body>
+
+
     <div class="profile-page">
         <!-- Navigation -->
         <nav class="navbar">
@@ -53,6 +55,8 @@
                     <div class="profile-avatar-large">{{avatar}}</div>
                     <h2 class="profile-name">{{user.nom}}</h2>
                     <p class="profile-email">{{user.email}}</p>
+
+                    {% include "flash.html" %}
                 </div>
             </header>
 

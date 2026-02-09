@@ -99,19 +99,22 @@ def register():
 @app.route('/acceuil')
 def acceuil():
     if 'id' in session:
-        avatar = trunc_name(session['name'])
-        if 'stations' not in session:
-            stations = Station().Get_all()
-            nearest = get_nearest_stations(stations, quarter= session['quartier'])
-            nearest = [{
-                'title': n.title,
-                'address': n.address,
-                'tel': n.tel,
-                'localisation': n.localisation,
-                'hours': n.hours,
-                'stock': n.stock
-            } for n in nearest]
-            session['stations'] = nearest
+        try:
+            avatar = trunc_name(session['name'])
+            if 'stations' not in session:
+                stations = Station().Get_all()
+                nearest = get_nearest_stations(stations, quarter= session['quartier'])
+                nearest = [{
+                    'title': n.title,
+                    'address': n.address,
+                    'tel': n.tel,
+                    'localisation': n.localisation,
+                    'hours': n.hours,
+                    'stock': n.stock
+                } for n in nearest]
+                session['stations'] = nearest
+        except Exception as e:
+            flash('Erreur lors du chargement des stations. Veuillez réessayer.', 'danger')
         
         return render_template('acceuil.html', avatar = avatar)
     else:
@@ -142,9 +145,13 @@ def station_manage():
 @app.route('/update_stock/<stock>', methods = ['GET', 'POST'])
 def update_stock(stock):
     if 'title' in session:
-        st = Station(title = session['title']).Get_station()
-        st.stock = stock
-        st.Update(title = session['title'])
+        try:
+            st = Station(title = session['title']).Get_station()
+            st.stock = stock
+            st.Update(title = session['title'])
+            flash('Stock mis à jour avec succès !', 'success')
+        except Exception as e:
+            flash('Erreur lors de la mise à jour du stock. Veuillez réessayer.', 'danger')
         
         avatar = trunc_name(session['title'])
         return redirect(url_for('station_manage', title = session['title'], avatar=avatar, station=st))
@@ -167,18 +174,22 @@ def confirmation(title):
     if 'id' in session:
         avatar = trunc_name(session['name'])
         st = Station(title = title).Get_station()
+        try:
+            msg = Message("Reservation depuis le site SmartGaz ",
+                    recipients=[session['email']]                    
+            )
+            aujourdhui = date.today()
+            msg.html = f"Reservation effectuée le : {aujourdhui} sur <span style='color: purple;'>SmartGaz</span>"
+            msg.html += f"<p > <span style='font-weight: bolder;'>Station :</span> {title}</p>"
+            msg.html += f"<p > <span style='font-weight: bolder;'>Adresse :</span> {st.address}</p>"
+            msg.html += f"<p > <span style='font-weight: bolder;'>Prix :</span> 6500fcfa 1 bouteille</p>"
+            msg.html += f"<p> Merci de votre confiance !</p>"
+            
+            mail.send(msg)
+            flash('Reservation effectuée avec succès !', 'success')
+        except Exception as e:
+            flash('Erreur lors de l\'envoi de l\'email de confirmation. Veuillez réessayer.', 'danger')
         
-        msg = Message("Reservation depuis le site SmartGaz ",
-                recipients=[session['email']]                    
-        )
-        aujourdhui = date.today()
-        msg.html = f"Reservation effectuée le : {aujourdhui} sur <span style='color: purple;'>SmartGaz</span>"
-        msg.html += f"<p > <span style='font-weight: bolder;'>Station :</span> {title}</p>"
-        msg.html += f"<p > <span style='font-weight: bolder;'>Adresse :</span> {st.address}</p>"
-        msg.html += f"<p > <span style='font-weight: bolder;'>Prix :</span> 6500fcfa 1 bouteille</p>"
-        msg.html += f"<p> Merci de votre confiance !</p>"
-        
-        mail.send(msg)
         return redirect(url_for('acceuil', avatar=avatar))
     else:
         return redirect(url_for('login', avatar=avatar))
@@ -197,15 +208,18 @@ def profile():
 @app.route('/update_profile', methods = ['GET', 'POST'])
 def update_profile():
     if request.method == 'POST':
-        email = request.form['email']
-        user = User(email=email).Get_user()
-        user.nom = request.form['fullname']
-        user.email = email
-        user.tel = request.form['phone']
-        user.ville = 'Yaounde'
-        user.quartier = request.form['quartier']
-        user.Update(session['id'])
-        print("user updated"   )
+        try:
+            email = request.form['email']
+            user = User(email=email).Get_user()
+            user.nom = request.form['fullname']
+            user.email = email
+            user.tel = request.form['phone']
+            user.ville = 'Yaounde'
+            user.quartier = request.form['quartier']
+            user.Update(session['id'])
+            flash('Profil mis à jour avec succès !', 'success')
+        except Exception as e:
+            flash('Erreur lors de la mise à jour du profil. Veuillez réessayer.', 'danger')
         
         
     return redirect(url_for('profile'))
@@ -215,7 +229,7 @@ def update_profile():
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 @app.route('/precedent')
 def precedent():

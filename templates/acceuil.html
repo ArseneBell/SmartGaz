@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">
 </head>
 <body>
+
+    {% include "flash.html" %}
+
+
     <div class="stations-page">
         <!-- Navigation -->
         <nav class="navbar">
@@ -96,6 +100,10 @@
 
         <!-- Contenu principal -->
         <main class="stations-content">
+
+            {% include "flash.html" %}
+
+            
             <!-- Légende -->
             <div class="legend-section">
                 <h3 class="legend-title">Légende</h3>
